@@ -1,13 +1,36 @@
-import { Experimental_CssVarsProvider as CssVarsProvider } from '@mui/material/styles';
-import reactLogo from './assets/react.svg';
-import viteLogo from '/vite.svg';
-import theme from './theming/theme.js';
-import ThemeToggle from './components/ThemeToggle.jsx'
-import './App.css';
+import { useQuery, gql } from "@apollo/client";
+import reactLogo from "./assets/react.svg";
+import { Outlet } from "react-router-dom";
+import viteLogo from "/vite.svg";
+
+import ThemeToggle from "./components/ThemeToggle.jsx";
+import "./App.css";
+
+const GET_PIKACHU = gql`
+  query GetPikachu {
+    pokemon_v2_pokemon(where: { id: { _eq: 25 } }) {
+      base_experience
+      height
+      id
+      is_default
+      name
+      order
+      pokemon_species_id
+      weight
+    }
+  }
+`;
 
 function App() {
+  const { loading, error, data } = useQuery(GET_PIKACHU);
+
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>Error : {error.message}</p>;
+
+  console.log(data);
+
   return (
-    <CssVarsProvider theme={theme}>
+    <>
       <div>
         <a href="https://vitejs.dev" target="_blank">
           <img src={viteLogo} className="logo" alt="Vite logo" />
@@ -16,19 +39,10 @@ function App() {
           <img src={reactLogo} className="logo react" alt="React logo" />
         </a>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
 
-      <ThemeToggle/>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR, next
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-      </CssVarsProvider>
-  )
+      <Outlet />
+    </>
+  );
 }
 
 export default App;

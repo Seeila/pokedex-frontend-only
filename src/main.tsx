@@ -1,10 +1,30 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
-import App from './App.tsx'
-import './index.css'
+import React from "react";
+import ReactDOM from "react-dom/client";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
+import { Experimental_CssVarsProvider as CssVarsProvider } from '@mui/material/styles';
 
-ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
+import { routes } from "./routes.tsx";
+import theme from './theming/theme.js';
+import "./index.css";
+
+const client = new ApolloClient({
+  uri: `${import.meta.env.VITE_API_URL}`,
+  cache: new InMemoryCache(),
+});
+
+const router = createBrowserRouter(routes, {
+  future: {
+    v7_normalizeFormMethod: true,
+  },
+});
+
+ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-)
+    <ApolloProvider client={client}>
+      <CssVarsProvider theme={theme}>
+        <RouterProvider router={router} />
+      </CssVarsProvider>
+    </ApolloProvider>
+  </React.StrictMode>
+);

@@ -1,7 +1,7 @@
 import { useColorScheme } from "@mui/material/styles";
 import Button from "@mui/material/Button";
 
-const ThemeToggle = () => {
+const ThemeToggle: React.FC = () => {
   const { mode, setMode } = useColorScheme();
   return (
     <Button
