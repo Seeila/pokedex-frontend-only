@@ -5,6 +5,7 @@ const ThemeToggle: React.FC = () => {
   const { mode, setMode } = useColorScheme();
   return (
     <Button
+      variant="contained"
       onClick={() => {
         setMode(mode === "light" ? "dark" : "light");
       }}
