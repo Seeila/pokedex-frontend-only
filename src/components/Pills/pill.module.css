@@ -1,0 +1,6 @@
+
+.root {
+    padding: 0.5rem;
+    background: var(--pill-color);
+    border-radius: var(--mui-shape-borderRadius);
+}
