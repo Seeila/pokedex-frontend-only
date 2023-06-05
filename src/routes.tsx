@@ -1,7 +1,7 @@
 import { RouteObject } from "react-router-dom";
 import Root from "./Root.tsx";
 import Pokedex from "./pages/Pokedex.tsx";
-import Pokemon from "./pages/Pokemon.tsx";
+import Pokemon from "@pokedex-graphql/pages/Pokemon/components/Pokemon.tsx";
 import ErrorPage from "./pages/ErrorPage.tsx";
 
 export const routes: RouteObject[] = [ {
