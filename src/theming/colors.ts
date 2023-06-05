@@ -1,4 +1,46 @@
-export const colors = {
+export interface IColor {
+    default: string;
+    light: string;
+    dark: string;
+}
+export interface IColors {
+    white: string;
+    black: string;
+    main: IColor;
+    secondary:IColor;
+    grey: {
+        50: string;
+        100: string;
+        200: string;
+        300: string;
+        400: string;
+        500: string;
+        600: string;
+        700: string;
+        800: string;
+        900: string;
+    },
+    normal: IColor;
+	fire: IColor;
+	water: IColor;
+	electric: IColor;
+	grass: IColor;
+	ice: IColor;
+	fighting: IColor;
+	poison: IColor;
+	ground: IColor;
+	flying: IColor;
+	psychic: IColor;
+	bug: IColor;
+	rock: IColor;
+	ghost: IColor;
+	dragon: IColor;
+	dark: IColor;
+	steel: IColor;
+	fairy:IColor;
+}
+
+export const colors: IColors = {
     white: '#fff',
     black: '#000',
     main:  {
