@@ -1,59 +1,165 @@
-import { experimental_extendTheme as extendTheme} from '@mui/material/styles';
-import { colors } from './colors';
+import { experimental_extendTheme as extendTheme, SimplePaletteColorOptions} from '@mui/material/styles';
+
+
+//Colors definition
+
+const colors = {
+    white: '#fff',
+    black: '#000',
+    grey: {
+      50: '#edeeee',
+      100: '#d1d5d9',
+      200: '#b3b9c1',
+      300: '#949daa',
+      400: '#6d747c',
+      500: '#596068',
+      600: '#49535f',
+      700: '#3b4149',
+      800: '#272C33',
+      900: '#1A2027'
+    },
+    normal: {
+      main: '#BED4B0',
+      light: '#D9EACE',
+      dark: '#A3B499'
+    },
+    fire: {
+      main: '#F37843',
+      light: '#FC9B71',
+      dark: '#CF4C14'
+    },
+    water: {
+      main: '#64ABED',
+      light: '#7BBCF8',
+      dark: '#3A93E5'
+    },
+    electric: {
+      main: '#F4C74D',
+      light: '#F3DC9B',
+      dark: '#DEA50E'
+    },
+    grass: {
+      main: '#99A98F',
+      light: '#A4B49A',
+      dark: '#7E9271'
+    },
+    ice: {
+      main: '#81D3D3',
+      light: '#9EE5E5',
+      dark: '#41AAAA'
+    },
+    fighting: {
+      main: '#C55151',
+      light: '#D67E7E',
+      dark: '#9F3333'
+    },
+    poison: {
+      main: '#A7456B',
+      light: '#B65379',
+      dark: '#8B2E52'
+    },
+    ground: {
+      main: '#FAAA53',
+      light: '#F6BF82',
+      dark: '#E98F2F'
+    },
+    flying: {
+      main: '#A3A6DE',
+      light: '#BBBEF3',
+      dark: '#8185D2'
+    },
+    psychic: {
+      main: '#C781A3',
+      light: '#D398B4',
+      dark: '#AE5580'
+    },
+    bug: {
+      main: '#678D72',
+      light: '#7F9886',
+      dark: '#3C6748'
+    },
+    rock: {
+      main: '#B0736C',
+      light: '#D09993',
+      dark: '#8A4C44'
+    },
+    ghost: {
+      main: '#8E649E',
+      light: '#9A78A7',
+      dark: '#6B397E'
+    },
+    dragon: {
+      main: '#A494C1',
+      light: '#B7AACF',
+      dark: '#8876AB'
+    },
+    dark: {
+      main: '#A4826A',
+      light: '#B08B70',
+      dark: '#8E5831'
+    },
+    steel: {
+      main: '#A6B7C0',
+      light: '#C1CBD0',
+      dark: '#899FAB'
+    },
+    fairy: {
+      main: '#F0AFC7',
+      light: '#FFCDE0',
+      dark: '#C5859C'
+    }
+};
+
+//Statuses definitions depending the colors already declared to avoid duplicate values
+const shared = {
+  error: {
+    main: colors.fire.main,
+    light: colors.fire.light,
+    dark: colors.fire.dark
+  },
+  warning: {
+    main: colors.electric.main,
+    light: colors.electric.light,
+    dark: colors.electric.dark
+  },
+  info: {
+    main: colors.water.main,
+    light: colors.water.light,
+    dark: colors.water.dark
+  },
+  success: {
+    main: colors.grass.main,
+    light: colors.grass.light,
+    dark: colors.grass.dark
+  },
+
+};
+
+//Changing sass variables to css custom variables and creating colors
 const theme = extendTheme({
-      colorSchemes: {
+  colorSchemes: {
         light: {
           palette: {
+            ...colors,
+            ...shared,
             primary: {
-              main: colors.main.default,
-              light: colors.main.light,
-              dark: colors.main.dark
+              main: colors.grey[50],
+              light: colors.white,
+              dark: colors.grey[100]
             },
             secondary: {
-              main: colors.white,
-              light: colors.grey[400],
-              dark: colors.grey[600]
+              main: colors.grey[800],
+              light: colors.grey[700],
+              dark: colors.grey[900]
             },
-            error: {
-              main: colors.fire.default,
-              light: colors.fire.light,
-              dark: colors.fire.dark
-            },
-            warning: {
-              main: colors.electric.default,
-              light: colors.electric.light,
-              dark: colors.electric.dark
-            },
-            info: {
-              main: colors.water.default,
-              light: colors.water.light,
-              dark: colors.water.dark
-            },
-            success: {
-              main: colors.grass.default,
-              light: colors.grass.light,
-              dark: colors.grass.dark
-            },
-            grey: {
-              50: colors.grey[50],
-              100: colors.grey[100],
-              200: colors.grey[200],
-              300: colors.grey[300],
-              400: colors.grey[400],
-              500: colors.grey[500],
-              600: colors.grey[600],
-              700: colors.grey[700],
-              800: colors.grey[800],
-              900: colors.grey[900],
-              A100: colors.grey[100],
-              A200: colors.grey[200],
-              A400: colors.grey[400],
-              A700: colors.grey[700]
+            common: {
+              background: colors.white,
+              onBackground: colors.grey[800]
             },
             text: {
-              primary: colors.main.default,
-              secondary: colors.water.default,
-              disabled: colors.grey[700],
+              primary: colors.grey[800],
+              secondary: colors.water.main,
+              disabled: colors.grey[600],
             },
             divider: colors.grey[300],
             background: {
@@ -61,95 +167,61 @@ const theme = extendTheme({
               default: colors.white,
             },
             action: {
-              active: colors.main.default,
-              hover: colors.main.default,
-              selected: colors.main.default,
+              active: colors.grey[800],
+              hover: colors.grey[800],
+              selected: colors.grey[800],
             },
             Alert: {
               errorColor: colors.fire.light,
               infoColor: colors.water.light,
               warningColor: colors.electric.light,
               successColor: colors.grass.light,
-              errorFilledBg: colors.fire.default,
-              infoFilledBg: colors.water.default,
-              warningFilledBg: colors.electric.default,
-              successFilledBg: colors.grass.default,
+              errorFilledBg: colors.fire.main,
+              infoFilledBg: colors.water.main,
+              warningFilledBg: colors.electric.main,
+              successFilledBg: colors.grass.main,
               errorFilledColor: colors.white,
               infoFilledColor: colors.white,
-              warningFilledColor: colors.main.default,
+              warningFilledColor: colors.grey[800],
               successFilledColor: colors.white,
               errorStandardBg: colors.fire.dark,
               infoStandardBg: colors.water.dark,
               warningStandardBg: colors.electric.dark,
               successStandardBg: colors.grass.dark,
-              errorIconColor: colors.fire.default,
-              infoIconColor: colors.water.default,
-              warningIconColor: colors.electric.default,
-              successIconColor: colors.grass.default
+              errorIconColor: colors.fire.main,
+              infoIconColor: colors.water.main,
+              warningIconColor: colors.electric.main,
+              successIconColor: colors.grass.main
             },
           },
         },
         dark: {
           palette: {
+            ...colors,
+            ...shared,
             primary: {
               main: colors.white,
               light: colors.grey[100],
               dark: colors.grey[700]
             },
             secondary: {
-              main: colors.main.default,
-              light: colors.main.light,
-              dark: colors.main.dark
-            },
-            error: {
-              main: colors.fire.default,
-              light: colors.fire.light,
-              dark: colors.fire.dark
-            },
-            warning: {
-              main: colors.electric.default,
-              light: colors.electric.light,
-              dark: colors.electric.dark
-            },
-            info: {
-              main: colors.water.default,
-              light: colors.water.light,
-              dark: colors.water.dark
-            },
-            success: {
-              main: colors.grass.default,
-              light: colors.grass.light,
-              dark: colors.grass.dark
+              main: colors.grey[800],
+              light: colors.grey[600],
+              dark: colors.grey[900]
             },
             common: {
-              background: colors.main.default,
+              background: colors.grey[800],
               onBackground: colors.white
-            },
-            grey: {
-              50: colors.grey[50],
-              100: colors.grey[100],
-              200: colors.grey[200],
-              300: colors.grey[300],
-              400: colors.grey[400],
-              500: colors.grey[500],
-              600: colors.grey[600],
-              700: colors.grey[700],
-              800: colors.grey[800],
-              900: colors.grey[900],
-              A100: colors.grey[100],
-              A200: colors.grey[200],
-              A400: colors.grey[400],
-              A700: colors.grey[700]
             },
             text: {
               primary: colors.white,
-              secondary: colors.water.default,
+              secondary: colors.water.main,
               disabled: colors.grey[300],
             },
             divider: colors.grey[700],
             background: {
-              paper: colors.main.default,
-              default: colors.main.default,
+              paper: colors.grey[800],
+              default: colors.grey[800],
             },
             action: {
               active: colors.white,
@@ -161,26 +233,26 @@ const theme = extendTheme({
               infoColor: colors.water.light,
               warningColor: colors.electric.light,
               successColor: colors.grass.light,
-              errorFilledBg: colors.fire.default,
-              infoFilledBg: colors.water.default,
-              warningFilledBg: colors.electric.default,
-              successFilledBg: colors.grass.default,
+              errorFilledBg: colors.fire.main,
+              infoFilledBg: colors.water.main,
+              warningFilledBg: colors.electric.main,
+              successFilledBg: colors.grass.main,
               errorFilledColor: colors.white,
               infoFilledColor: colors.white,
-              warningFilledColor: colors.main.default,
+              warningFilledColor: colors.grey[800],
               successFilledColor: colors.white,
               errorStandardBg: colors.fire.dark,
               infoStandardBg: colors.water.dark,
               warningStandardBg: colors.electric.dark,
               successStandardBg: colors.grass.dark,
-              errorIconColor: colors.fire.default,
-              infoIconColor: colors.water.default,
-              warningIconColor: colors.electric.default,
-              successIconColor: colors.grass.default
+              errorIconColor: colors.fire.main,
+              infoIconColor: colors.water.main,
+              warningIconColor: colors.electric.main,
+              successIconColor: colors.grass.main
             }
           },
         },
       },
     });
 
-    export default theme;
+export default theme;
