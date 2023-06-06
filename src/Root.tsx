@@ -1,11 +1,13 @@
-import React from "react"
+import React from "react";
 import { Outlet } from "react-router-dom";
-import { useIsMobile } from "./helpers/useIsMobile";
+import { useTheme } from '@mui/material/styles';
+import useMediaQuery from '@mui/material/useMediaQuery';
 import MobileMenu from "@pokedex-graphql/layouts/MobileMenu/components/MobileMenu";
 import ThemeToggle from "./components/ThemeToggle";
 
 const Root : React.FC = () => {
-    const { isMobile } = useIsMobile();
+    const theme = useTheme();
+    const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
 
     const menu = isMobile ? <MobileMenu /> : <p>Desktop Menu</p>;
 
