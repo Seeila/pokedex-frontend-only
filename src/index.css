@@ -34,8 +34,8 @@ body {
   display: flex;
   min-width: 320px;
   min-height: 100vh;
-  color: var(--mui-palette-text-primary);
-  background-color: var(--mui-palette-common-background);
+  color: var(--pokedex-palette-text-primary);
+  background-color: var(--pokedex-palette-common-background);
 }
 
 @media (prefers-color-scheme: light) {

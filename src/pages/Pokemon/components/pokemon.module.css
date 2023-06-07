@@ -1,6 +1,6 @@
 .root {
-    --pokemon-bg: var(--mui-palette-main-primary);
-    --pokemon-bg-dark: var(--mui-palette-primary-dark);
+    --pokemon-bg: var(--pokedex-palette-main-primary);
+    --pokemon-bg-dark: var(--pokedex-palette-primary-dark);
 
     width: 100vw;
     height: 100%;

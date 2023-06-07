@@ -2,29 +2,29 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
-import { Experimental_CssVarsProvider as CssVarsProvider } from '@mui/material/styles';
+import { Experimental_CssVarsProvider as CssVarsProvider } from "@mui/material/styles";
 
 import { routes } from "./routes.tsx";
-import theme from './theming/theme.js';
+import pokedexTheme from "./theming/theme.js";
 import "./index.css";
 
 const client = new ApolloClient({
-  uri: `${import.meta.env.VITE_API_URL}`,
-  cache: new InMemoryCache(),
+    uri: `${import.meta.env.VITE_API_URL}`,
+    cache: new InMemoryCache(),
 });
 
 const router = createBrowserRouter(routes, {
-  future: {
-    v7_normalizeFormMethod: true,
-  },
+    future: {
+        v7_normalizeFormMethod: true,
+    },
 });
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
-  <React.StrictMode>
-    <ApolloProvider client={client}>
-      <CssVarsProvider theme={theme}>
-        <RouterProvider router={router} />
-      </CssVarsProvider>
-    </ApolloProvider>
-  </React.StrictMode>
+    <React.StrictMode>
+        <ApolloProvider client={client}>
+            <CssVarsProvider theme={pokedexTheme}>
+                <RouterProvider router={router} />
+            </CssVarsProvider>
+        </ApolloProvider>
+    </React.StrictMode>
 );
