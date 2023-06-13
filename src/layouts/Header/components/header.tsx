@@ -75,7 +75,7 @@ const Header = () => {
         }
 
         return null;
-    }, [pathname, handleBackButtonClick, menu, theme, toggleDrawer]);
+    }, [pathname, handleBackButtonClick, menu, theme, toggleDrawer, menuColor]);
 
     return (
         <>
