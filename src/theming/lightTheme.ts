@@ -8,14 +8,14 @@ export const lightTheme = {
         ...status,
         ...alerts,
         primary: {
-            main: colors.grey[50],
-            light: colors.white,
-            dark: colors.grey[100],
-        },
-        secondary: {
             main: colors.grey[800],
             light: colors.grey[700],
             dark: colors.grey[900],
+        },
+        secondary: {
+            main: colors.white,
+            light: colors.grey[50],
+            dark: colors.grey[100],
         },
         common: {
             background: colors.white,

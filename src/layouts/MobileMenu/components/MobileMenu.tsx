@@ -1,42 +1,73 @@
+import { useMemo } from "react";
 import Drawer from "@mui/material/Drawer";
 import Box from "@mui/material/Box";
-import FormatListBulletedIcon from "@mui/icons-material/FormatListBulleted";
-import Button from "@mui/material/Button";
+import List from "@mui/material/List";
+import ListItem from "@mui/material/ListItem";
 
-import useMobileMenu from "@pokedex-graphql/layouts/MobileMenu/hooks/useMobileMenu.ts";
-import MobileMenuList from "@pokedex-graphql/layouts/MobileMenu/components/MobileMenuList.tsx";
+import {
+    AnchorType,
+    IDrawerOpen,
+} from "@pokedex-graphql/layouts/Header/hooks/useHeader";
+import Link from "@pokedex-graphql/components/Link/Link";
 
-const ANCHOR = "left";
+export interface IMenuItems {
+    name: string;
+    url: string;
+}
 
-const MobileMenu = () => {
-    const { isDrawerOpen, toggleDrawer, menuItems } = useMobileMenu();
+interface MobileMenuProps {
+    menuItems: IMenuItems[];
+    toggleDrawer: (
+        anchor: AnchorType,
+        open: boolean
+    ) => (event: React.KeyboardEvent | React.MouseEvent) => void;
+    isDrawerOpen: IDrawerOpen;
+    anchor: AnchorType;
+}
+
+const MobileMenu: React.FC<MobileMenuProps> = ({
+    isDrawerOpen,
+    toggleDrawer,
+    menuItems,
+    anchor,
+}) => {
+    const menuListItems = useMemo(() => {
+        return menuItems.map((menuItem) => (
+            <ListItem key={`menu-${menuItem.name}`}>
+                <Link href={menuItem.url} variant="navigation">
+                    {menuItem.name}
+                </Link>
+            </ListItem>
+        ));
+    }, [menuItems]);
 
     return (
-        <>
-            <Button onClick={toggleDrawer(ANCHOR, true)}>
-                <FormatListBulletedIcon />
-            </Button>
-            <Drawer
-                anchor={ANCHOR}
-                open={isDrawerOpen[ANCHOR]}
-                onClose={toggleDrawer(ANCHOR, false)}
+        <Drawer
+            anchor={anchor}
+            open={isDrawerOpen[anchor]}
+            onClose={toggleDrawer(anchor, false)}
+        >
+            <Box
+                sx={{
+                    width:
+                        anchor === "top" || anchor === "bottom" ? "auto" : 250,
+                }}
+                margin={1}
+                role="presentation"
+                component="nav"
+                onClick={toggleDrawer(anchor, false)}
+                onKeyDown={toggleDrawer(anchor, false)}
             >
-                <Box
-                    sx={{
-                        width:
-                            ANCHOR === "top" || ANCHOR === "bottom"
-                                ? "auto"
-                                : 250,
-                    }}
-                    margin={1}
-                    role="presentation"
-                    onClick={toggleDrawer(ANCHOR, false)}
-                    onKeyDown={toggleDrawer(ANCHOR, false)}
-                >
-                    <MobileMenuList menuItems={menuItems} />
-                </Box>
-            </Drawer>
-        </>
+                <List>
+                    <ListItem>
+                        <Link href="/" variant="navigation">
+                            Home
+                        </Link>
+                    </ListItem>
+                    {menuListItems}
+                </List>
+            </Box>
+        </Drawer>
     );
 };
 
