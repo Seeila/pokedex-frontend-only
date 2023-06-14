@@ -1,4 +1,5 @@
 export const typography = {
+    fontFamily: "Roboto, Arial",
     h1: {
         fontSize: "2.5rem",
         fontWeight: 900,
