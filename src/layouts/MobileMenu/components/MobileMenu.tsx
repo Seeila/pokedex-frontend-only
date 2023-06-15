@@ -8,12 +8,8 @@ import {
     AnchorType,
     IDrawerOpen,
 } from "@pokedex-graphql/layouts/Header/hooks/useHeader";
+import { IMenuItems } from "@pokedex-graphql/datas/menuItems";
 import Link from "@pokedex-graphql/components/Link/Link";
-
-export interface IMenuItems {
-    name: string;
-    url: string;
-}
 
 interface MobileMenuProps {
     menuItems: IMenuItems[];

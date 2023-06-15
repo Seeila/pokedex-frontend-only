@@ -1,28 +1,38 @@
+export interface IMenuItems {
+    name: string;
+    url: string;
+    color: string;
+}
 
-import {IMenuItems} from '@pokedex-graphql/layouts/MobileMenu/components/MobileMenuList';
 export const menuItems: IMenuItems[] = [
     {
-        "name": "Pokedex",
-        "url": "/pokedex"
+        name: "Pokedex",
+        url: "/pokedex",
+        color: "grass",
     },
     {
-        "name": "Moves",
-        "url": "/"
+        name: "Moves",
+        url: "/",
+        color: "fire",
     },
     {
-        "name": "Abilities",
-        "url": "/"
+        name: "Abilities",
+        url: "/",
+        color: "water",
     },
     {
-        "name": "Items",
-        "url": "/"
+        name: "Items",
+        url: "/",
+        color: "electric",
     },
     {
-        "name": "Locations",
-        "url": "/"
+        name: "Locations",
+        url: "/",
+        color: "ghost",
     },
     {
-        "name": "Type Charts",
-        "url": "/"
-    }
-]
+        name: "Type Charts",
+        url: "/",
+        color: "rock",
+    },
+];

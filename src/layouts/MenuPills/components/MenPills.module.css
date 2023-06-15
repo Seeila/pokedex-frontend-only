@@ -1,0 +1,15 @@
+.pokeballContainer {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translate(45%, -50%);
+
+    .pokeBallIcon {
+        width: 5.938rem;
+        height: 5.938rem;
+    }
+}
+
+.pillLink {
+    width: 100%;
+}
