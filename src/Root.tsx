@@ -7,7 +7,7 @@ const Root: React.FC = () => {
     return (
         <>
             <Header />
-            <ThemeToggle />
+            {/* <ThemeToggle /> */}
             <Outlet />
         </>
     );

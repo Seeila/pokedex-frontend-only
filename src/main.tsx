@@ -5,7 +5,7 @@ import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
 import { Experimental_CssVarsProvider as CssVarsProvider } from "@mui/material/styles";
 import { CssBaseline } from "@mui/material/";
 
-import { routes } from "./routes.tsx";
+import { routes } from "./router/routes.tsx";
 import pokedexTheme from "./theming/theme.js";
 import "./index.css";
 
