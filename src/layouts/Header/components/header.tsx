@@ -12,7 +12,7 @@ import MobileMenu, {
 
 import BackButton from "@pokedex-graphql/components/Buttons/backButton";
 import TopBgImages from "@pokedex-graphql/layouts/TopBgImages";
-
+import { Box } from "@mui/material";
 const ANCHOR = "left";
 
 const Header = () => {
@@ -47,6 +47,7 @@ const Header = () => {
                     position="sticky"
                     elevation={0}
                     color="transparent"
+                    component="nav"
                     sx={{
                         padding: `${theme.spacing(3.5)}  0 ${theme.spacing(
                             1.75
@@ -78,10 +79,10 @@ const Header = () => {
     }, [pathname, handleBackButtonClick, menu, theme, toggleDrawer, menuColor]);
 
     return (
-        <>
+        <Box component="header">
             {appBar}
             <TopBgImages />
-        </>
+        </Box>
     );
 };
 

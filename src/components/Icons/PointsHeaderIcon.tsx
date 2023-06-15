@@ -3,7 +3,7 @@ import SvgIcon, { SvgIconProps } from "@mui/material/SvgIcon";
 
 const PointsHeaderIcon: React.FC<SvgIconProps> = (props) => {
     return (
-        <SvgIcon {...props}>
+        <SvgIcon {...props} viewBox="0 0 54 30">
             <circle cx="3" cy="3" r="3" fill={props.htmlColor} />
             <circle cx="3" cy="15" r="3" fill={props.htmlColor} />
             <circle cx="3" cy="27" r="3" fill={props.htmlColor} />

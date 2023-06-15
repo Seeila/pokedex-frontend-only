@@ -6,3 +6,35 @@
     background-color: rgba(255,255,255, 0.2);
     transform: rotate(-20deg) translate(-39%, -35%);
 }
+
+.pokeballContainer {
+    --pokeballSize: 211px;
+    width: var(--pokeballSize);
+    height: var(--pokeballSize);
+    position: absolute;
+    top: 0;
+    right: 0;
+    overflow: hidden;
+
+    .pokeballIcon {
+        width: var(--pokeballSize);
+        height: var(--pokeballSize);
+        transform: translate(32.5%, -23%);
+    }
+}
+
+
+.pokemonPageBg {
+    width: 100%;
+    position: absolute;
+    top: 0;
+    right: 0;
+
+    .pointsIcon {
+        width: 54px;
+        height: 30px;
+        position: absolute;
+        top: 6px;
+        right: 92px;
+    }
+}
